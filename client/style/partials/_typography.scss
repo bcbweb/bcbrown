@@ -1,0 +1,65 @@
+[class^='icon-'],
+[class*=' icon-'] {
+  // Better Font Rendering ===========
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+
+  // use !important to prevent issues with browser extensions that change fonts
+  font-family: 'glyphs' !important; // sass-lint:disable-line no-important
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  speak: none;
+  text-transform: none;
+}
+
+[data-icon] {
+  &:before {
+    color: inherit;
+    content: attr(data-icon);
+    font-family: 'glyphs';
+    speak: none;
+  }
+}
+
+.icon-error_outline {
+  &:before {
+    content: '\e001';
+  }
+}
+
+.icon-search {
+  :before {
+    content: '\e986';
+  }
+}
+
+.icon-plus {
+  &:before {
+    content: '\ea0a';
+  }
+}
+
+.icon-minus {
+  &:before {
+    content: '\ea0b';
+  }
+}
+
+.icon-cancel {
+  :before {
+    content: '\e5c9';
+  }
+}
+
+.icon-close {
+  :before {
+    content: '\e5c9';
+  }
+}
+
+.icon-menu {
+  :before {
+    content: '\e5d2';
+  }
+}

@@ -1,0 +1,21 @@
+.articles {
+  margin-top: 3rem;
+
+  .delete-link {
+    display: block;
+    text-align: right;
+    width: 100%;
+  }
+
+  .articles__admin-options {
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    font-size: .8rem;
+    justify-content: flex-end;
+  }
+
+  .articles__admin-button {
+    margin: .2em;
+  }
+}

@@ -1,0 +1,43 @@
+body {
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  background: $color__background_body;
+  color: $color__text-default;
+  font-family: $font-family__default;
+  font-size: 1em;
+}
+
+@media (min-width: 50rem) {
+  body {
+    font-size: 1.5em;
+  }
+}
+
+a {
+  color: $color__text-link;
+  opacity: .8;
+  text-decoration: none;
+  transition: opacity .2s;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+p {
+  margin: 1em 0;
+}
+
+h1 {
+  font-family: $font-family__heading;
+  text-transform: uppercase;
+}
+
+figure > img {
+  width: 100%;
+}
+
+figure > figcaption {
+  color: $color__text-light;
+  font-size: .8em;
+  margin-bottom: .25rem;
+}

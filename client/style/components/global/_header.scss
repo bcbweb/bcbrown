@@ -1,0 +1,114 @@
+.header {
+  -moz-osx-font-smoothing: grayscale; // sass-lint:disable-line no-vendor-prefixes
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  line-height: 1.2;
+  margin: 1rem 0;
+  overflow: auto;
+  text-align: center;
+  width: 100%;
+}
+
+.header-title {
+  display: inline-block;
+}
+
+.header-link {
+  text-decoration: none;
+}
+
+.logo-wrap,
+.subtitle {
+  color: $color__text-default;
+  font-weight: 300;
+  text-decoration: none;
+  text-shadow: 0 1px 4px $shadow-default;
+  text-transform: uppercase;
+}
+
+.logo-wrap {
+  font-size: 3em;
+  letter-spacing: 2px;
+  position: relative;
+  transition: all .2s;
+
+  &::before {
+    background: url('/images/logo-small.png');
+    content: '';
+    display: block;
+    height: 41px;
+    margin-left: 46px;
+    position: absolute;
+    right: -46px;
+    top: .29em;
+    width: 46px;
+  }
+}
+
+.subtitle {
+  color: $color__text-subtitle;
+  font-family: novitonovaregular;
+  letter-spacing: 1px;
+}
+
+.firstname {
+  font-family: novitonovathin;
+}
+
+.surname {
+  font-family: novitonovaregular;
+}
+
+.subtitle-wrap {
+  font-size: 1.585em;
+  margin-top: -19px;
+  position: relative;
+  z-index: -1;
+}
+
+@media (min-width: $breakpoint__extra-small) {
+  .logo-wrap {
+    font-size: 5em;
+  }
+
+  .subtitle-wrap {
+    font-size: 2.6em;
+    margin-top: -21px;
+  }
+}
+
+@media (min-width: $breakpoint__small) {
+  .logo-wrap {
+    font-size: 4.6rem;
+  }
+
+  .subtitle-wrap {
+    font-size: 2.43rem;
+    margin-top: -30px;
+  }
+}
+
+@media (min-width: $breakpoint__medium) {
+  .logo-wrap {
+    font-size: 6rem;
+
+    &::after {
+      background: url('/images/logo.png');
+      content: '';
+      display: block;
+      height: 83px;
+      position: absolute;
+      right: -90px;
+      top: .29em;
+      width: 91px;
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .subtitle-wrap {
+    font-size: 3.15rem;
+    margin-top: -38px;
+  }
+}

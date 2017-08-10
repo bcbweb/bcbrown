@@ -1,0 +1,51 @@
+form {
+  [type='checkbox'],
+  [type='text'],
+  [type='email'],
+  [type='password'],
+  [type='submit'],
+  textarea,
+  label {
+    margin: .5rem 0;
+    opacity: .8;
+
+    &:focus,
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  [type='text'],
+  [type='email'],
+  [type='password'],
+  [type='submit'],
+  textarea {
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: $color__text-default;
+    outline: none;
+    padding: 1em;
+    width: 100%;
+  }
+
+  [type='text'],
+  [type='email'],
+  [type='password'],
+  textarea {
+    background: lighten($color__background_body, 5);
+  }
+
+  [type='submit'] {
+    background: $color__background_call-to-action;
+  }
+
+  textarea {
+    height: 10rem;
+  }
+
+  [type='checkbox'] {
+    margin: .5rem;
+  }
+}

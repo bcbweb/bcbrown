@@ -1,0 +1,9 @@
+.social-icons {
+  display: flex;
+  font-size: 3rem;
+  justify-content: center;
+}
+
+.social-icons > li > a {
+  color: $color__text-default;
+}

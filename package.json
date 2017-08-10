@@ -1,0 +1,33 @@
+{
+  "name": "bcbrown",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "babel-eslint": "^7.2.3",
+    "babel-runtime": "^6.25.0",
+    "bcrypt": "^1.0.2",
+    "dompurify": "^0.9.0",
+    "indexof": "0.0.1",
+    "jsdom": "^11.1.0",
+    "meteor-node-stubs": "^0.2.11",
+    "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
+    "rc-tooltip": "^3.4.3",
+    "react": "^15.6.1",
+    "react-addons-create-fragment": "^15.6.0",
+    "react-dom": "^15.6.1",
+    "react-mounter": "^1.2.0",
+    "react-share": "^1.15.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-import-resolver-meteor": "^0.3.4",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^3.0.2",
+    "eslint-plugin-meteor": "^4.1.4",
+    "eslint-plugin-react": "^6.10.3"
+  }
+}

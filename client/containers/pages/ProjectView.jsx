@@ -1,0 +1,48 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { createContainer } from 'meteor/react-meteor-data';
+import DOMPurify from 'dompurify';
+
+import Projects from '../../../collections/projects';
+
+class ProjectView extends Component {
+  render() {
+    if (! this.props.project) return <div/>;
+
+    let cleanContent = '';
+    if (this.props.ready) {
+      cleanContent = DOMPurify.sanitize(this.props.project.description);
+    }
+
+    return (
+      <section className="page-content project-view">
+        <a href="/work" className="link__back">Back to projects</a>
+        <header><h1>{this.props.ready && this.props.project.title}</h1></header>
+        <ul className="project-view__tags tag-list">
+          <li>Tags:&nbsp;</li>
+          {this.props.project.tags.map((tag, tagIndex) => {
+            const tagHref = `/tag/${tag}`;
+            return <li key={tagIndex}>
+              <a href={tagHref}>{tag}</a>
+            </li>;
+          })}
+        </ul>
+        <div dangerouslySetInnerHTML={{ __html: cleanContent }}/>
+      </section>
+    );
+  }
+}
+
+ProjectView.propTypes = {
+  project: PropTypes.object,
+  ready: PropTypes.bool
+};
+
+export default createContainer(() => {
+  const subscription = Meteor.subscribe('singleProject', this.props.slug);
+
+  return {
+    project: Projects.findOne({ slug: this.props.slug }),
+    ready: subscription.ready()
+  };
+}, ProjectView);

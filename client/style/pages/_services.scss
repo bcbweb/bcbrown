@@ -1,0 +1,14 @@
+.services {
+  article {
+    padding-bottom: 2rem;
+  }
+
+  article > p {
+    margin-bottom: 0;
+  }
+
+  & > article {
+    border-top: solid 5px $color__border-default;
+    padding-top: 2rem;
+  }
+}

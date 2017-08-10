@@ -1,0 +1,11 @@
+main {
+  margin: auto;
+  max-width: 60rem;
+  width: $width__content_medium;
+}
+
+@media (min-width: $breakpoint__small) {
+  main {
+    width: $width__content_small;
+  }
+}

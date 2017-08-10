@@ -1,0 +1,9 @@
+.loading {
+  display: block;
+  margin: auto;
+
+  path,
+  rect {
+    fill: $color__text-link;
+  }
+}

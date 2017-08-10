@@ -1,0 +1,23 @@
+.home {
+  &::after {
+    content: '';
+    display: block;
+    height: 5rem;
+  }
+
+  .content,
+  .center-wrapper {
+    margin: 2rem auto 0;
+  }
+
+  @media (min-width: 30rem) {
+    .content,
+    .center-wrapper {
+      margin-top: 3rem;
+    }
+
+    .content {
+      width: 70%;
+    }
+  }
+}

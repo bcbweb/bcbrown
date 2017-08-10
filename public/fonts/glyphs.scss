@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'glyphs';
+  font-style: normal;
+  font-weight: normal;
+  src:  url('./glyphs.eot?o8i936');
+  src:  url('./glyphs.eot?o8i936#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('./glyphs.ttf?o8i936') format('truetype'),
+  url('./glyphs.woff?o8i936') format('woff'),
+  url('./glyphs.svg?o8i936#glyphs') format('svg');
+}
+
+.icon-menu {
+  :before {
+    content: '\e5d2';
+  }
+}

@@ -1,0 +1,26 @@
+// -- Definitions -- //
+$color__tuna: hsla(234, 16%, 24%, 1);
+$color__carrot-orange: hsla(31, 92%, 53%, 1);
+$color__red: hsla(0, 100%, 50%, 1);
+
+// -- Purpose -- //
+// Base
+$color__highlight: $color__red;
+
+// Background
+$color__background_body: $color__tuna;
+$color__background_call-to-action: $color__carrot-orange;
+
+// Text
+$color__text-default: #fff;
+$color__text-light: hsla(245, 5%, 65%, 1);
+$color__text-subtitle: $color__carrot-orange;
+$color__text-link: hsla(0, 100%, 66%, 1);
+$color__text-call-to-action: #fff;
+
+// Borders
+$color__border-default: hsla(236, 8%, 39%, 1);
+$color__border-call-to-action: #fff;
+
+// Other
+$shadow-default: rgba(0, 0, 0, .3);

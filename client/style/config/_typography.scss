@@ -1,0 +1,75 @@
+// -- Definitions -- //
+@font-face {
+  font-family: 'novitonovathin';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/novitonova-thin-webfont.eot');
+  src: url('/fonts/novitonova-thin-webfont.eot?#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('/fonts/novitonova-thin-webfont.woff2') format('woff2'),
+  url('/fonts/novitonova-thin-webfont.woff') format('woff'),
+  url('/fonts/novitonova-thin-webfont.ttf') format('truetype'),
+  url('/fonts/novitonova-thin-webfont.svg#novitonovathin') format('svg');
+}
+
+@font-face {
+  font-family: 'novitonovaregular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/novitonova-regular-webfont.eot');
+  src: url('/fonts/novitonova-regular-webfont.eot?#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('/fonts/novitonova-regular-webfont.woff2') format('woff2'),
+  url('/fonts/novitonova-regular-webfont.woff') format('woff'),
+  url('/fonts/novitonova-regular-webfont.ttf') format('truetype'),
+  url('/fonts/novitonova-regular-webfont.svg#novitonovaregular') format('svg');
+}
+
+@font-face {
+  font-family: 'alegreya_sansextrabold';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/alegreyasans-extrabold-webfont.eot');
+  src: url('/fonts/alegreyasans-extrabold-webfont.eot?#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('/fonts/alegreyasans-extrabold-webfont.woff2') format('woff2'),
+  url('/fonts/alegreyasans-extrabold-webfont.woff') format('woff'),
+  url('/fonts/alegreyasans-extrabold-webfont.ttf') format('truetype'),
+  url('/fonts/alegreyasans-extrabold-webfont.svg#alegreya_sansextrabold') format('svg');
+}
+
+@font-face {
+  font-family: 'alegreya_sansregular';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/alegreyasans-regular-webfont.eot');
+  src: url('/fonts/alegreyasans-regular-webfont.eot?#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('/fonts/alegreyasans-regular-webfont.woff2') format('woff2'),
+  url('/fonts/alegreyasans-regular-webfont.woff') format('woff'),
+  url('/fonts/alegreyasans-regular-webfont.ttf') format('truetype'),
+  url('/fonts/alegreyasans-regular-webfont.svg#alegreya_sansregular') format('svg');
+}
+
+@font-face {
+  font-family: 'alegreya_sansthin';
+  font-style: normal;
+  font-weight: normal;
+  src: url('/fonts/alegreyasans-thin-webfont.eot');
+  src: url('/fonts/alegreyasans-thin-webfont.eot?#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('/fonts/alegreyasans-thin-webfont.woff2') format('woff2'),
+  url('/fonts/alegreyasans-thin-webfont.woff') format('woff'),
+  url('/fonts/alegreyasans-thin-webfont.ttf') format('truetype'),
+  url('/fonts/alegreyasans-thin-webfont.svg#alegreya_sansthin') format('svg');
+}
+
+@font-face {
+  font-family: 'glyphs';
+  font-style: normal;
+  font-weight: normal;
+  src:  url('/fonts/glyphs.eot?o8i936');
+  src:  url('/fonts/glyphs.eot?o8i936#iefix') format('embedded-opentype'), // sass-lint:disable-line no-duplicate-properties
+  url('/fonts/glyphs.ttf?o8i936') format('truetype'),
+  url('/fonts/glyphs.woff?o8i936') format('woff'),
+  url('/fonts/glyphs.svg?o8i936#glyphs') format('svg');
+}
+
+// -- Variables -- //
+$font-family__default: serif;
+$font-family__heading: 'alegreya_sansextrabold', sans-serif;

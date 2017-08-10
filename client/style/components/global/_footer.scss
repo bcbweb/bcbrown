@@ -1,0 +1,14 @@
+.footer-main {
+  border-top: solid 1px $color__border-default;
+  box-sizing: border-box;
+  color: $color__text-light;
+  font-size: .9em;
+  margin: auto;
+  padding: 2rem;
+  text-align: center;
+  width: $width__content_medium;
+}
+
+.footer-main__session-data {
+  font-size: .7em;
+}

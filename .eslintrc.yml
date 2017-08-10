@@ -1,0 +1,90 @@
+parser: babel-eslint
+# enable ES6
+parserOptions:
+  ecmaVersion: 6
+  sourceType: "module"
+  ecmaFeatures:
+    jsx: true # enable React's JSX
+
+# register plugins
+plugins:
+  - meteor
+  - react
+
+# use the rules of eslint-config-airbnb
+# and the recommended rules of eslint-plugin-meteor
+extends:
+  - airbnb/base
+  - plugin:meteor/recommended
+
+settings:
+  import/core-modules: [
+    meteor/meteor,
+    meteor/themeteorchef:bert,
+    meteor/aldeed:simple-schema,
+    meteor/ongoworks:speakingurl,
+    meteor/react-meteor-data,
+    react
+  ]
+
+
+# registerenvironments
+env:
+  meteor: true
+  browser: true
+  node: true
+
+rules:
+  # overwrite some rules
+  class-methods-use-this:
+    - error
+    - exceptMethods: [
+      "componentDidMount",
+      "componentDidUpdate",
+      "componentWillMount",
+      "componentWillReceiveProps",
+      "componentWillUnmount",
+      "componentWillUpdate",
+      "render",
+      "shouldComponentUpdate"
+    ]
+  comma-dangle:
+    - error
+    - never
+  no-multi-spaces:
+    - error
+    - exceptions:
+        VariableDeclarator: true
+  no-underscore-dangle:
+    - off
+  no-unexpected-multiline: 2
+  no-throw-literal: 0
+  max-len:
+    - error
+    - ignoreComments: true
+  space-unary-ops:
+    - error
+    - words: true
+      nonwords: true
+      overrides:
+        "!": true
+
+  # eslint-plugin-react
+  react/jsx-uses-react: 2
+  react/jsx-uses-vars: 2
+  react/react-in-jsx-scope: 2
+
+  # eslint-plugin-meteor
+  meteor/no-session: [0] # allow Session
+  meteor/prefer-session-equals: [2] # prefer Session.equals instead
+
+globals:
+  # collections
+  Foo: false
+  Bar: false
+
+  # packages
+  FlowRouter: false # kadira:flow-router
+  GoogleMaps: false # dburles:google-maps
+  moment: false # momentjs:moment
+  ReactMeteorData: false # react-meteor-data
