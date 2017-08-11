@@ -11,7 +11,7 @@ class SinglePage extends Component {
       this.props.ready &&
       (! this.props.page || ! this.props.page.published)
     ) {
-      return <div>Page not found (404)</div>;
+      return <div className="page-not-found">Page not found :(</div>;
     }
 
     const config = { ADD_ATTR: ['target'] };
