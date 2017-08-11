@@ -41,7 +41,7 @@ class Work extends Component {
                     }}
                   >
                   </a>
-                  {this.data.hasUser &&
+                  {this.props.hasUser &&
                     <ul className="portfolio__admin-options">
                       <li>
                         <button
