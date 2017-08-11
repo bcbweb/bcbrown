@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'react-mounter';
-import { WebApp } from 'meteor/webapp';
 
 import './main.html';
 
@@ -20,8 +19,6 @@ import TagResults from './containers/pages/TagResults.jsx';
 import ArticleEditor from './containers/editors/ArticleEditor.jsx';
 import PageEditor from './containers/editors/PageEditor.jsx';
 import ProjectEditor from './containers/editors/ProjectEditor.jsx';
-
-WebApp.addHtmlAttributeHook(() => ({ lang: 'en' }));
 
 FlowRouter.route('/', {
   name: 'index',
