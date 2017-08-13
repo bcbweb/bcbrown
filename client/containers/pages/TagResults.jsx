@@ -14,7 +14,7 @@ class TagResults extends Component {
   render() {
     const tag = this.props.tag;
 
-    if (this.data.results.length === 0) {
+    if (this.props.results.length === 0) {
       return <p>
         No articles, pages, or projects have been tagged with "{tag}" yet.
       </p>;
@@ -23,7 +23,7 @@ class TagResults extends Component {
     return (
       <section className="page-content tag-results">
         <p className="tag-results__info">Entries tagged with "{tag}":</p>
-        {this.data.results.map((result) => {
+        {this.props.results.map((result) => {
           switch (result.type) {
             case 'article':
               return <ListItemArticle
