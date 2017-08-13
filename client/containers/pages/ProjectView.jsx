@@ -38,11 +38,11 @@ ProjectView.propTypes = {
   ready: PropTypes.bool
 };
 
-export default createContainer(() => {
-  const subscription = Meteor.subscribe('singleProject', this.props.slug);
+export default createContainer((params) => {
+  const subscription = Meteor.subscribe('singleProject', params.slug);
 
   return {
-    project: Projects.findOne({ slug: this.props.slug }),
+    project: Projects.findOne({ slug: params.slug }),
     ready: subscription.ready()
   };
 }, ProjectView);
