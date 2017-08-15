@@ -10,6 +10,7 @@ $color__highlight: $color__red;
 // Background
 $color__background_body: $color__tuna;
 $color__background_call-to-action: $color__carrot-orange;
+$color__background_code-block: hsla(220, 13%, 18%, 1);
 
 // Text
 $color__text-default: #fff;
@@ -17,6 +18,7 @@ $color__text-light: hsla(245, 5%, 65%, 1);
 $color__text-subtitle: $color__carrot-orange;
 $color__text-link: hsla(0, 100%, 66%, 1);
 $color__text-call-to-action: #fff;
+$color__text_code-block: #abb2bf;
 
 // Borders
 $color__border-default: hsla(236, 8%, 39%, 1);

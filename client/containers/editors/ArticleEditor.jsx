@@ -11,6 +11,7 @@ import Form from '../../components/forms/Form.jsx';
 import FormGroup from '../../components/forms/FormGroup.jsx';
 import FormControl from '../../components/forms/FormControl.jsx';
 import SuccessButton from '../../components/buttons/SuccessButton.jsx';
+import Loading from '../../components/global/Loading.jsx';
 
 class ArticleEditor extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class ArticleEditor extends Component {
 
         if (! component.props.newArticle) {
           article._id = component.props.articleId;
+          article.date = component.props.article.date;
         }
 
         Meteor.call('saveArticle', article, (error) => {
@@ -80,6 +82,8 @@ class ArticleEditor extends Component {
   }
 
   render() {
+    if (! this.props.ready) return <Loading/>;
+
     const article = this.props.article;
 
     return <section className="page-content editor">
@@ -134,7 +138,7 @@ class ArticleEditor extends Component {
             showLabel={ false }
             style="textarea"
             name="articleContent"
-            label="Content"
+            label="Content (markdown)"
             defaultValue={ article && article.content }
           />
         </FormGroup>

@@ -11,6 +11,7 @@ import Form from '../../components/forms/Form.jsx';
 import FormGroup from '../../components/forms/FormGroup.jsx';
 import FormControl from '../../components/forms/FormControl.jsx';
 import SuccessButton from '../../components/buttons/SuccessButton.jsx';
+import Loading from '../../components/global/Loading.jsx';
 
 class PageEditor extends Component {
   validations() {
@@ -74,6 +75,8 @@ class PageEditor extends Component {
   }
 
   render() {
+    if (! this.props.ready) return <Loading/>;
+
     const page = this.props.page;
 
     return <section className="page-content editor">

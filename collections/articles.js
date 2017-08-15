@@ -26,13 +26,32 @@ const ArticlesSchema = new SimpleSchema({
   },
   content: {
     type: String,
-    label: 'The content of this post.',
+    label: 'The content of this post in markdown',
+    optional: true
+  },
+  parsedContent: {
+    type: String,
+    label: 'The content of this post parsed as HTML',
     optional: true
   },
   published: {
     type: Boolean,
     label: 'Is this post published?',
     defaultValue: false
+  },
+  created: {
+    type: String,
+    label: 'The date this post was created on.',
+    autoValue() {
+      return (new Date()).toISOString();
+    }
+  },
+  date: {
+    type: String,
+    label: 'The date this post was created.',
+    autoValue() {
+      return (new Date()).toISOString();
+    }
   },
   updated: {
     type: String,
