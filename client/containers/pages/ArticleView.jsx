@@ -30,7 +30,6 @@ class ArticleView extends Component {
     }
 
     const articleUrl = `https://bcbrown.com/articles/${this.props.slug}`;
-
     return (
       <section className="page-content article-view">
         <Helmet>
@@ -75,7 +74,7 @@ class ArticleView extends Component {
         </div>
         <header><h1>{this.props.ready && article.title}</h1></header>
         <time>{this.props.ready && longDate}</time>
-        {article.tags &&
+        {article.tags[0] &&
           <ul className="article-view__tags tag-list">
             <li>Tags:&nbsp;</li>
             {article.tags.map((tag, tagIndex) => {
