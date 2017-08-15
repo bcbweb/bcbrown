@@ -75,6 +75,17 @@ class ArticleView extends Component {
         </div>
         <header><h1>{this.props.ready && article.title}</h1></header>
         <time>{this.props.ready && longDate}</time>
+        {article.tags &&
+          <ul className="article-view__tags tag-list">
+            <li>Tags:&nbsp;</li>
+            {article.tags.map((tag, tagIndex) => {
+              const tagHref = `/tag/${tag}`;
+              return <li key={tagIndex}>
+                <a href={tagHref}>{tag}</a>
+              </li>;
+            })}
+          </ul>
+        }
         <div dangerouslySetInnerHTML={{ __html: cleanContent }}/>
       </section>
     );
