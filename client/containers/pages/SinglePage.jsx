@@ -28,6 +28,10 @@ class SinglePage extends Component {
           property="og:description"
           content={this.props.page.standfirst}
         />
+        <meta
+          name="description"
+          content={this.props.page.standfirst}
+        />
       </Helmet>
       <section
           className={`page-content ${this.props.slug}`}

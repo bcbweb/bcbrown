@@ -23,6 +23,10 @@ class ProjectView extends Component {
             property="og:description"
             content={this.props.project.standfirst || this.props.project.title}
           />
+          <meta
+            name="description"
+            content={this.props.project.standfirst || this.props.project.title}
+          />
         </Helmet>
         <a href="/work" className="link__back">Back to projects</a>
         <header><h1>{this.props.ready && this.props.project.title}</h1></header>

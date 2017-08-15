@@ -38,6 +38,10 @@ class ArticleView extends Component {
             property="og:description"
             content={article.standfirst}
           />
+          <meta
+            name="description"
+            content={article.standfirst}
+          />
         </Helmet>
         <div className="page-content__actions">
           <a href="/articles" className="link__back">Back to articles</a>
