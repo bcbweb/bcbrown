@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { Helmet } from 'react-helmet';
 
 import Projects from '../../../collections/projects';
 import Loading from '../../components/global/Loading.jsx';
@@ -31,6 +32,16 @@ class Work extends Component {
 
     return (
       <section className="page-content work">
+        <Helmet>
+          <meta
+            property="og:description"
+            content="View my portfolio."
+          />
+          <meta
+            name="description"
+            content="View my portfolio."
+          />
+        </Helmet>
         <header><h1>Some recent projects</h1></header>
         <article className="content">
           <ul className="portfolio">
@@ -91,7 +102,7 @@ export default createContainer(() => {
 
   return {
     hasUser: Meteor.user(),
-    projects: Projects.find({}, { sort: { updated: -1 } }).fetch(),
+    projects: Projects.find({}, { sort: { updated: -1 } }).fetch(), // eslint-disable-line space-unary-ops
     ready: subscription.ready()
   };
 }, Work);

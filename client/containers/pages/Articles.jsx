@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import createFragment from 'react-addons-create-fragment';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
+import { Helmet } from 'react-helmet';
 
 import Articles from '../../../collections/articles';
 import ListItemArticle from '../../components/global/ListItemArticle.jsx';
@@ -41,6 +42,16 @@ class ArticlesPage extends Component {
 
     return (
       <section className="page-content articles">
+        <Helmet>
+          <meta
+            property="og:description"
+            content="Read my articles."
+          />
+          <meta
+            name="description"
+            content="Read my articles."
+          />
+        </Helmet>
         {this.props.articles.map((article) => {
           if (! article.published && userId !== article.author) return false;
 
@@ -102,7 +113,7 @@ export default createContainer(() => {
   const articlesSubscription = Meteor.subscribe('allArticles');
 
   return {
-    articles: Articles.find({}, { sort: { date: -1 } }).fetch(),
+    articles: Articles.find({}, { sort: { date: -1 } }).fetch(), // eslint-disable-line space-unary-ops
     hasUser: Meteor.user(),
     ready: articlesSubscription.ready()
   };

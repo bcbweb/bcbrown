@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Helmet } from 'react-helmet';
 
 import Articles from '../../../collections/articles';
 import Pages from '../../../collections/pages';
@@ -22,6 +23,16 @@ class TagResults extends Component {
 
     return (
       <section className="page-content tag-results">
+        <Helmet>
+          <meta
+            property="og:description"
+            content={`Entries tagged with ${tag}.`}
+          />
+          <meta
+            name="description"
+            content={`Entries tagged with ${tag}.`}
+          />
+        </Helmet>
         <p className="tag-results__info">Entries tagged with "{tag}":</p>
         {this.props.results.map((result) => {
           switch (result.type) {

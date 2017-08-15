@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import DOMPurify from 'dompurify';
+import { Helmet } from 'react-helmet';
 
 import Projects from '../../../collections/projects';
 import Loading from '../../components/global/Loading.jsx';
@@ -17,6 +18,16 @@ class ProjectView extends Component {
 
     return (
       <section className="page-content project-view">
+        <Helmet>
+          <meta
+            property="og:description"
+            content={this.props.project.standfirst || this.props.project.title}
+          />
+          <meta
+            name="description"
+            content={this.props.project.standfirst || this.props.project.title}
+          />
+        </Helmet>
         <a href="/work" className="link__back">Back to projects</a>
         <header><h1>{this.props.ready && this.props.project.title}</h1></header>
         <ul className="project-view__tags tag-list">
