@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import DOMPurify from 'dompurify';
+import { Helmet } from 'react-helmet';
+
+import Loading from '../../components/global/Loading.jsx';
 
 import Pages from '../../../collections/pages';
 
 class SinglePage extends Component {
   render() {
-    if (
-      this.props.ready &&
-      (! this.props.page || ! this.props.page.published)
-    ) {
+    if (! this.props.ready) return <Loading/>;
+
+    if (! this.props.page || ! this.props.page.published) {
       return <div className="page-not-found">Page not found :(</div>;
     }
 
@@ -20,12 +22,19 @@ class SinglePage extends Component {
       cleanContent = DOMPurify.sanitize(this.props.page.content, config);
     }
 
-    return (
+    return <div>
+      <Helmet>
+        <meta
+          property="og:description"
+          content={this.props.page.standfirst}
+        />
+      </Helmet>
       <section
-        className={`page-content ${this.props.slug}`}
-        dangerouslySetInnerHTML={{ __html: cleanContent }}
-      />
-    );
+          className={`page-content ${this.props.slug}`}
+          dangerouslySetInnerHTML={{ __html: cleanContent }}
+        >
+      </section>
+    </div>;
   }
 }
 

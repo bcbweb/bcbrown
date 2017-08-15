@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
 import DOMPurify from 'dompurify';
 import { ShareButtons } from 'react-share';
+import { Helmet } from 'react-helmet';
 
 import Articles from '../../../collections/articles';
 import { formatLastUpdate } from '../../helpers/react';
@@ -32,6 +33,12 @@ class ArticleView extends Component {
 
     return (
       <section className="page-content article-view">
+        <Helmet>
+          <meta
+            property="og:description"
+            content={article.standfirst}
+          />
+        </Helmet>
         <div className="page-content__actions">
           <a href="/articles" className="link__back">Back to articles</a>
           <ul className="social-icons">
