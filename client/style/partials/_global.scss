@@ -23,13 +23,22 @@ a {
   }
 }
 
-p {
-  margin: 1em 0;
+p + p {
+  margin-top: 1em;
+}
+
+pre + * {
+  margin-top: 1em;
 }
 
 h1 {
   font-family: $font-family__heading;
   text-transform: uppercase;
+}
+
+h2 {
+  font-weight: bold;
+  margin: 1em 0 .5em;
 }
 
 figure > img {
@@ -40,4 +49,25 @@ figure > figcaption {
   color: $color__text-light;
   font-size: .8em;
   margin-bottom: .25rem;
+}
+
+ol {
+  list-style: decimal;
+  margin-left: 1em;
+}
+
+p + ol {
+  margin-top: 1em;
+}
+
+[class^='language-'] {
+  background: $color__background_code-block;
+  border-bottom-left-radius: .5rem;
+  border-bottom-right-radius: .5rem;
+  color: $color__text_code-block;
+  display: block;
+  font-family: 'ubuntu-mono', serif;
+  font-size: .8em;
+  overflow-x: auto;
+  padding: .8em;
 }

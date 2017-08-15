@@ -6,6 +6,7 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import Articles from '../../../collections/articles';
 import ListItemArticle from '../../components/global/ListItemArticle.jsx';
+import Loading from '../../components/global/Loading.jsx';
 
 class ArticlesPage extends Component {
   constructor(props) {
@@ -14,20 +15,22 @@ class ArticlesPage extends Component {
     this.state = {};
   }
 
-  static deleteItem(article) {
-    Meteor.call('removeArticle', article, (error) => {
-      if (error) {
-        Bert.alert(error.reason, 'danger');
-      } else {
-        Bert.alert('Project removed!', 'success');
-      }
-    });
-  }
-
   render() {
-    if (this.props.ready && this.props.articles.length === 0) {
+    if (! this.props.ready) return <Loading/>;
+
+    if (this.props.articles.length === 0) {
       return <p>No articles to display.</p>;
     }
+
+    const deleteItem = (article) => {
+      Meteor.call('removeArticle', article, (error) => {
+        if (error) {
+          Bert.alert(error.reason, 'danger');
+        } else {
+          Bert.alert('Article removed!', 'success');
+        }
+      });
+    };
 
     const adminButtonClasses = [
       'admin-button',
@@ -42,7 +45,7 @@ class ArticlesPage extends Component {
           if (! article.published && userId !== article.author) return false;
 
           const listItem = <ListItemArticle
-            date={article.updated}
+            date={article.date}
             key={article._id}
             slug={article.slug}
             standfirst={article.standfirst}
@@ -68,7 +71,7 @@ class ArticlesPage extends Component {
                 className={
                   `${adminButtonClasses} ${' articles__delete'}`
                 }
-                onClick={() => this.deleteItem(article)}
+                onClick={() => deleteItem(article)}
               >
                 Delete
               </button>
@@ -99,7 +102,7 @@ export default createContainer(() => {
   const articlesSubscription = Meteor.subscribe('allArticles');
 
   return {
-    articles: Articles.find({}).fetch(),
+    articles: Articles.find({}, { sort: { date: -1 } }).fetch(),
     hasUser: Meteor.user(),
     ready: articlesSubscription.ready()
   };

@@ -4,15 +4,16 @@ import { createContainer } from 'meteor/react-meteor-data';
 import DOMPurify from 'dompurify';
 
 import Projects from '../../../collections/projects';
+import Loading from '../../components/global/Loading.jsx';
 
 class ProjectView extends Component {
   render() {
-    if (! this.props.project) return <div/>;
+    if (! this.props.ready) return <Loading/>;
+
+    if (! this.props.project) return <div>Project not found.</div>;
 
     let cleanContent = '';
-    if (this.props.ready) {
-      cleanContent = DOMPurify.sanitize(this.props.project.description);
-    }
+    cleanContent = DOMPurify.sanitize(this.props.project.description);
 
     return (
       <section className="page-content project-view">

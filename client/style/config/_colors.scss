@@ -2,6 +2,12 @@
 $color__tuna: hsla(234, 16%, 24%, 1);
 $color__carrot-orange: hsla(31, 92%, 53%, 1);
 $color__red: hsla(0, 100%, 50%, 1);
+$color__white: hsla(0, 100%, 100%, 1);
+$color__santas-gray: hsla(245, 5%, 65%, 1);
+$color__sunset-orange: hsla(0, 100%, 66%, 1);
+$color__cadet-blue: hsla(219, 14%, 71%, 1);
+$color__mid-gray: hsla(236, 8%, 39%, 1);
+$color__shark: hsla(220, 13%, 18%, 1);
 
 // -- Purpose -- //
 // Base
@@ -10,17 +16,19 @@ $color__highlight: $color__red;
 // Background
 $color__background_body: $color__tuna;
 $color__background_call-to-action: $color__carrot-orange;
+$color__background_code-block: $color__shark;
 
 // Text
-$color__text-default: #fff;
-$color__text-light: hsla(245, 5%, 65%, 1);
+$color__text-default: $color__white;
+$color__text-light: $color__santas-gray;
 $color__text-subtitle: $color__carrot-orange;
-$color__text-link: hsla(0, 100%, 66%, 1);
-$color__text-call-to-action: #fff;
+$color__text-link: $color__sunset-orange;
+$color__text-call-to-action: $color__white;
+$color__text_code-block: $color__cadet-blue;
 
 // Borders
-$color__border-default: hsla(236, 8%, 39%, 1);
-$color__border-call-to-action: #fff;
+$color__border-default: $color__mid-gray;
+$color__border-call-to-action: $color__white;
 
 // Other
-$shadow-default: rgba(0, 0, 0, .3);
+$shadow-default: hsla(0, 0%, 0%, .3);

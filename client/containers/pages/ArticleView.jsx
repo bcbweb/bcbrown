@@ -22,9 +22,10 @@ class ArticleView extends Component {
     const dateObject = formatLastUpdate(article.updated, false);
     const longDate = `${dateObject.month} ${dateObject.day} ${dateObject.year}`;
 
+    const config = { };
     let cleanContent = '';
     if (this.props.ready) {
-      cleanContent = DOMPurify.sanitize(article.content);
+      cleanContent = DOMPurify.sanitize(article.parsedContent, config);
     }
 
     const articleUrl = `https://bcbrown.com/articles/${this.props.slug}`;

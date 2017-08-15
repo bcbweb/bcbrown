@@ -4,6 +4,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Bert } from 'meteor/themeteorchef:bert';
 
 import Projects from '../../../collections/projects';
+import Loading from '../../components/global/Loading.jsx';
 
 class Work extends Component {
   static deleteItem(project) {
@@ -17,7 +18,9 @@ class Work extends Component {
   }
 
   render() {
-    if (this.props.ready && this.props.projects.length === 0) {
+    if (! this.props.ready) return <Loading/>;
+
+    if (this.props.projects.length === 0) {
       return <p>No projects to display.</p>;
     }
 
@@ -88,7 +91,7 @@ export default createContainer(() => {
 
   return {
     hasUser: Meteor.user(),
-    projects: Projects.find({}, { sort: ['updated', 'asc'] }).fetch(),
+    projects: Projects.find({}, { sort: { updated: -1 } }).fetch(),
     ready: subscription.ready()
   };
 }, Work);
