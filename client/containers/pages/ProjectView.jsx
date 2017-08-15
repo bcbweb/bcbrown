@@ -30,15 +30,17 @@ class ProjectView extends Component {
         </Helmet>
         <a href="/work" className="link__back">Back to projects</a>
         <header><h1>{this.props.ready && this.props.project.title}</h1></header>
-        <ul className="project-view__tags tag-list">
-          <li>Tags:&nbsp;</li>
-          {this.props.project.tags.map((tag, tagIndex) => {
-            const tagHref = `/tag/${tag}`;
-            return <li key={tagIndex}>
-              <a href={tagHref}>{tag}</a>
-            </li>;
-          })}
-        </ul>
+        {this.props.project.tags &&
+          <ul className="project-view__tags tag-list">
+            <li>Tags:&nbsp;</li>
+            {this.props.project.tags.map((tag, tagIndex) => {
+              const tagHref = `/tag/${tag}`;
+              return <li key={tagIndex}>
+                <a href={tagHref}>{tag}</a>
+              </li>;
+            })}
+          </ul>
+        }
         <div dangerouslySetInnerHTML={{ __html: cleanContent }}/>
       </section>
     );
