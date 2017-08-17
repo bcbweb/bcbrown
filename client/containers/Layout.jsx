@@ -16,7 +16,7 @@ class Layout extends Component {
 
   render() {
     return <div className="app-root">
-      <Helmet htmlAttributes={{ lang: 'enGB' }}/>
+      <Helmet htmlAttributes={{ lang: 'en-GB' }}/>
       <Navigation/>
       <Header/>
       <main>
