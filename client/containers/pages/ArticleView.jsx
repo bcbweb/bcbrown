@@ -51,7 +51,7 @@ class ArticleView extends Component {
                 url={articleUrl}
                 title={article.title}
               >
-                <span data-icon="&#xe903;" aria-hidden="true"></span>
+                <span data-icon="&#xe904;" aria-hidden="true"></span>
               </TwitterShareButton>
             </li>
             <li className="social-icons__icon social-icons__facebook">
@@ -60,14 +60,14 @@ class ArticleView extends Component {
                 title={article.title}
                 picture={`${Meteor.absoluteUrl()}images/icons/open-graph.jpg`}
               >
-                <span data-icon="&#xe904;" aria-hidden="true"></span>
+                <span data-icon="&#xe905;" aria-hidden="true"></span>
               </FacebookShareButton>
             </li>
             <li className="social-icons__icon social-icons__google-plus">
               <GooglePlusShareButton
                 url={articleUrl}
               >
-                <span data-icon="&#xe905;" aria-hidden="true"></span>
+                <span data-icon="&#xe906;" aria-hidden="true"></span>
               </GooglePlusShareButton>
             </li>
           </ul>
