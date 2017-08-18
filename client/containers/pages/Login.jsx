@@ -3,11 +3,6 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 class Login extends Component {
   render() {
-    const passwordLabelLink = {
-      href: '/recover-password',
-      label: 'Forgotten your password?'
-    };
-
     return <section className="page-content login">
       <header><h1>Log in</h1></header>
       {! Meteor.user() &&

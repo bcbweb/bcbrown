@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Roles } from 'meteor/alanning:roles';
 
 import Header from '../components/global/Header.jsx';
 import Navigation from '../components/global/Navigation.jsx';
 import Footer from '../components/global/Footer.jsx';
 import Loading from '../components/global/Loading.jsx';
-import Login from './pages/Login.jsx';
 
 class Layout extends Component {
   getView() {
-    return this.props.canView() ? this.props.content : <Login />;
+    if (this.props.canView()) {
+      return this.props.content;
+    }
+
+    return <div>You don't have permission to access this page.</div>;
   }
 
   render() {
@@ -54,7 +58,7 @@ export default createContainer(() => ({
     const currentRoute = FlowRouter.current();
     const currentName = currentRoute.route.name;
     const currentSlug = currentRoute.params.slug;
-    console.log(Meteor.user(), Meteor.loggingIn());
+
     return (
       this.isPublic(currentName) ||
       this.isPublic(currentSlug) ||
