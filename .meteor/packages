@@ -29,7 +29,10 @@ check@1.2.5
 digilord:faker
 accounts-ui@1.1.9
 accounts-password@1.4.0
-email@1.2.3
+email
 spiderable
 dynamic-import
 react-meteor-data
+accounts-google
+service-configuration
+alanning:roles

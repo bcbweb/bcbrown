@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Bert } from 'meteor/themeteorchef:bert';
+
+const handleLogOut = (event) => {
+  event.preventDefault();
+
+  Meteor.logout();
+};
 
 class Footer extends Component {
-  static handleLogOut(event) {
-    event.preventDefault();
-
-    Meteor.logout();
-  }
-
   render() {
     return (
       <footer className="footer-main">
         <div>&copy; Benjamin Brown</div>
-        {this.props.hasUser &&
+        {Meteor.user() &&
           <div className="footer-main__session-data">
-            Logged in as {this.props.user.fullname}<br/>
-            <a href="#" onClick={this.handleLogOut}>Log out</a>
+            Logged in as {Meteor.user().profile.name}<br/>
+            <a
+              href="#"
+              onClick={() => { handleLogOut(event); }}
+            >
+              Log out
+            </a>
           </div>
         }
       </footer>
@@ -24,23 +30,4 @@ class Footer extends Component {
   }
 }
 
-Footer.propTypes = {
-  user: PropTypes.object
-};
-
-export default createContainer(() => {
-  const data = {};
-
-  if (Meteor.user()) {
-    data.hasUser = true;
-
-    const firstName = Meteor.user().profile.name.first;
-    const lastName = Meteor.user().profile.name.last;
-
-    data.user = {
-      fullname: `${firstName} ${lastName}`
-    };
-  }
-
-  return data;
-}, Footer);
+export default Footer;

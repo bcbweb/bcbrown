@@ -41,14 +41,10 @@ export default createContainer(() => ({
     return [
       'index',
       'articles',
-      'contact',
       'work',
-      'services',
-      'singlePost',
+      'singlePage',
       'tagResults',
       'login',
-      'recoverPassword',
-      'resetPassword',
       'notFound',
       'articleView',
       'projectView'
@@ -58,11 +54,11 @@ export default createContainer(() => ({
     const currentRoute = FlowRouter.current();
     const currentName = currentRoute.route.name;
     const currentSlug = currentRoute.params.slug;
-
+    console.log(Meteor.user(), Meteor.loggingIn());
     return (
       this.isPublic(currentName) ||
       this.isPublic(currentSlug) ||
-      Meteor.user()
+      (Roles.userIsInRole(Meteor.userId(), 'admin'))
     );
   }
 }), Layout);

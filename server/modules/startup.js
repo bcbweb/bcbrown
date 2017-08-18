@@ -4,12 +4,17 @@ const _setEnvironmentVariables = () => Modules.server.setEnvironmentVariables();
 
 const _setBrowserPolicies = () => {};
 
-const _generateAccounts = () => Modules.server.generateAccounts();
+const _configureServices = () => Modules.server.configureServices();
+
+const _setUserRoles = () => {
+  // Roles.addUsersToRoles('xxxxxxxxxxxxxxxxx', 'admin');
+};
 
 const startup = () => {
   _setEnvironmentVariables();
   _setBrowserPolicies();
-  _generateAccounts();
+  _configureServices();
+  _setUserRoles();
 };
 
 Modules.server.startup = startup;

@@ -5,17 +5,17 @@ import { Bert } from 'meteor/themeteorchef:bert';
 
 import Pages from '../../../collections/pages';
 
-class PageList extends Component {
-  static deleteItem(page) {
-    Meteor.call('removePage', page, (error) => {
-      if (error) {
-        Bert.alert(error.reason, 'danger');
-      } else {
-        Bert.alert('Project removed!', 'success');
-      }
-    });
-  }
+const deleteItem = (page) => {
+  Meteor.call('removePage', page, (error) => {
+    if (error) {
+      Bert.alert(error.reason, 'danger');
+    } else {
+      Bert.alert('Project removed!', 'success');
+    }
+  });
+};
 
+class PageList extends Component {
   render() {
     if (this.props.ready && this.props.pages.length === 0) {
       return <div>No pages to display.</div>;
@@ -52,7 +52,7 @@ class PageList extends Component {
                 className={
                   `${adminButtonClasses} ${' pages__delete'}`
                 }
-                onClick={() => this.deleteItem(page)}
+                onClick={() => deleteItem(page)}
               >
                 Delete
               </button>

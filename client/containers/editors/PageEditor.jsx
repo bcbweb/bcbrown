@@ -108,7 +108,7 @@ class PageEditor extends Component {
             type="text"
             name="pageTitle"
             label="Title"
-            onChange={ this.generateSlug }
+            onChange={ event => this.generateSlug(event) }
             defaultValue={ page && page.title }
           />
           <FormControl

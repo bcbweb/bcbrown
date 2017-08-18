@@ -71,3 +71,24 @@ p + ol {
   overflow-x: auto;
   padding: .8em;
 }
+
+dt,
+dd {
+  padding: .25em 0;
+}
+
+dt {
+  clear: left;
+  float: left;
+  font-weight: bold;
+  text-align: left;
+  width: 5em;
+
+  &:after {
+    content: ':';
+  }
+}
+
+dd {
+  margin: 0 0 0 5em;
+}
