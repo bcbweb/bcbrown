@@ -24,6 +24,7 @@ settings:
     meteor/aldeed:simple-schema,
     meteor/ongoworks:speakingurl,
     meteor/react-meteor-data,
+    meteor/alanning:roles,
     meteor/webapp,
     react
   ]

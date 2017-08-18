@@ -2,7 +2,7 @@
   "name": "bcbrown",
   "private": true,
   "scripts": {
-    "start": "MONGO_URL=\"mongodb://$BCBROWN_MONGODB_NAME:$BCBROWN_MONGODB_PASS@ds151651.mlab.com:51651/$BCBROWN_MONGODB_NAME\" meteor"
+    "start": "MONGO_URL=\"mongodb://$BCBROWN_MONGODB_NAME:$BCBROWN_MONGODB_PASS@ds151651.mlab.com:51651/$BCBROWN_MONGODB_NAME\" meteor run --settings settings.json"
   },
   "dependencies": {
     "babel-eslint": "^7.2.3",

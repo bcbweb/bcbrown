@@ -12,6 +12,7 @@ import SinglePage from './containers/pages/SinglePage.jsx';
 import ArticlesPage from './containers/pages/Articles.jsx';
 import WorkPage from './containers/pages/Work.jsx';
 import PageList from './containers/pages/PageList.jsx';
+import UserList from './containers/pages/UserList.jsx';
 import ArticleView from './containers/pages/ArticleView.jsx';
 import ProjectView from './containers/pages/ProjectView.jsx';
 import TagResults from './containers/pages/TagResults.jsx';
@@ -52,6 +53,15 @@ FlowRouter.route('/pages', {
   action: (params) => {
     mount(Layout, {
       content: <PageList {...params}/>
+    });
+  }
+});
+
+FlowRouter.route('/users', {
+  name: 'users',
+  action: (params) => {
+    mount(Layout, {
+      content: <UserList {...params}/>
     });
   }
 });
