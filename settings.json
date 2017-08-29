@@ -1,0 +1,11 @@
+{
+  "public": {},
+  "private": {
+    "oAuth": {
+      "google": {
+        "clientId": "170016000679-rar7g54a65lcpdkpl1vqksl4sld5pou6.apps.googleusercontent.com",
+        "secret": "OpD9O3aiCtrBzDnVleuj8jR5"
+      }
+    }
+  }
+}
