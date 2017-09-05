@@ -84,7 +84,7 @@ dt {
   text-align: left;
   width: 5em;
 
-  &:after {
+  &::after {
     content: ':';
   }
 }
