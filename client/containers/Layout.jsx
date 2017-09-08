@@ -21,7 +21,6 @@ class Layout extends Component {
   }
 
   render() {
-    console.log(Store.getState());
     return <Provider store={Store}>
       <div className="app-root">
         <Helmet htmlAttributes={{ lang: 'en-GB' }}/>
