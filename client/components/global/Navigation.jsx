@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { createContainer } from 'meteor/react-meteor-data';
 
 import Pages from '../../../collections/pages';
@@ -40,14 +41,8 @@ class Navigation extends Component {
       <ul className={menuItemsClass}>
           {pages.map((page) => {
             let menuLinkClass = 'navigation-main__menu-link';
-            const currentRoute = FlowRouter.current();
-            const currentName = currentRoute.route.name;
-            const currentSlug = currentRoute.params.slug;
 
-            if (
-              currentName !== 'home' &&
-              (currentName === page.slug || currentSlug === page.slug)
-            ) {
+            if (this.props.currentPage === page.slug) {
               menuLinkClass = `${menuLinkClass} ${menuLinkClass}_active`;
             }
 
@@ -55,12 +50,6 @@ class Navigation extends Component {
               <a
                 className={ menuLinkClass }
                 href={`/${page.slug}`}
-                onClick={() => {
-                  this.forceUpdate();
-                  this.setState({
-                    menuOpen: false
-                  });
-                }}
               >
                 {page.title}
               </a>
@@ -78,7 +67,7 @@ Navigation.propTypes = {
   ready: PropTypes.bool
 };
 
-export default createContainer(() => {
+const meteorContainer = createContainer(() => {
   const subscription = Meteor.subscribe('allPages');
 
   return {
@@ -94,3 +83,9 @@ export default createContainer(() => {
     ready: subscription.ready()
   };
 }, Navigation);
+
+const mapStateToProps = state => ({
+  currentPage: state.currentPage
+});
+
+export default connect(mapStateToProps)(meteorContainer);

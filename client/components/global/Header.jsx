@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Header extends Component {
   render() {
     return (
       <header className="header">
         <div className="header-title">
-          <a href="/" className="header-link">
+          <a
+            href="/"
+            className="header-link"
+          >
             <h1 className="logo-wrap">
                 <span className="firstname">Benjamin</span>
                 <span className="surname">Brown</span>
@@ -20,4 +24,8 @@ class Header extends Component {
   }
 }
 
-export default Header;
+const mapStateToProps = state => ({
+  currentPage: state.currentPage
+});
+
+export default connect(mapStateToProps)(Header);
