@@ -1,18 +1,18 @@
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 
-const Projects = new Mongo.Collection('projects');
+const Projects = new Mongo.Collection('projects')
 
 Projects.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
-});
+})
 
 Projects.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
-});
+})
 
 const ProjectsSchema = new SimpleSchema({
   description: {
@@ -28,26 +28,26 @@ const ProjectsSchema = new SimpleSchema({
   slug: {
     type: String,
     label: 'The slug for this project.',
-    autoValue() {
-      const slug              = this.value;
+    autoValue () {
+      const slug = this.value
       const existingSlugCount = Projects.find(
         { _id: { $ne: this.docId }, slug: new RegExp(slug) }
-      ).count();
-      const existingUntitled  = Projects.find(
+      ).count()
+      const existingUntitled = Projects.find(
         { slug: { $regex: /untitled-project/i } }
-      ).count();
+      ).count()
 
       if (slug) {
         if (existingSlugCount > 0) {
-          return `${slug}-${existingSlugCount + 1}`;
+          return `${slug}-${existingSlugCount + 1}`
         }
-        return slug;
+        return slug
       }
 
       if (existingUntitled > 0) {
-        return `untitled-project-${existingUntitled + 1}`;
+        return `untitled-project-${existingUntitled + 1}`
       }
-      return 'untitled-project';
+      return 'untitled-project'
     }
   },
   standfirst: {
@@ -68,12 +68,12 @@ const ProjectsSchema = new SimpleSchema({
   updated: {
     type: String,
     label: 'The date this project was last updated on.',
-    autoValue() {
-      return (new Date()).toISOString();
+    autoValue () {
+      return (new Date()).toISOString()
     }
   }
-});
+})
 
-Projects.attachSchema(ProjectsSchema);
+Projects.attachSchema(ProjectsSchema)
 
-export default Projects;
+export default Projects

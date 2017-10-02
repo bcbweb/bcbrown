@@ -25,7 +25,6 @@ class UserList extends Component {
     ].join(' ')
 
     console.log(this.props.users)
-    const userId = Meteor.user()._id
 
     return <section className='page-content users'>
       {this.props.users.map(user =>

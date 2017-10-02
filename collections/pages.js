@@ -1,27 +1,27 @@
-import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { SimpleSchema } from 'meteor/aldeed:simple-schema'
 
-const Pages = new Mongo.Collection('pages');
+const Pages = new Mongo.Collection('pages')
 
 Pages.allow({
   insert: () => false,
   update: () => false,
   remove: () => false
-});
+})
 
 Pages.deny({
   insert: () => true,
   update: () => true,
   remove: () => true
-});
+})
 
 const PagesSchema = new SimpleSchema({
   author: {
     type: String,
     label: 'The ID of the author of this post.',
-    autoValue() {
-      const user = Meteor.users.findOne({ _id: this.userId });
-      if (user) return user._id;
-      return false;
+    autoValue () {
+      const user = Meteor.users.findOne({ _id: this.userId })
+      if (user) return user._id
+      return false
     }
   },
   content: {
@@ -47,33 +47,33 @@ const PagesSchema = new SimpleSchema({
   updated: {
     type: String,
     label: 'The date this post was last updated on.',
-    autoValue() {
-      return (new Date()).toISOString();
+    autoValue () {
+      return (new Date()).toISOString()
     }
   },
   slug: {
     type: String,
     label: 'The slug for this post.',
-    autoValue() {
-      const slug              = this.value;
+    autoValue () {
+      const slug = this.value
       const existingSlugCount = Pages.find(
         { _id: { $ne: this.docId }, slug: new RegExp(slug) }
-      ).count();
-      const existingUntitled  = Pages.find(
+      ).count()
+      const existingUntitled = Pages.find(
         { slug: { $regex: /untitled-page/i } }
-      ).count();
+      ).count()
 
       if (slug) {
         if (existingSlugCount > 0) {
-          return `${slug}-${existingSlugCount + 1}`;
+          return `${slug}-${existingSlugCount + 1}`
         }
-        return slug;
+        return slug
       }
 
       if (existingUntitled > 0) {
-        return `untitled-page-${existingUntitled + 1}`;
+        return `untitled-page-${existingUntitled + 1}`
       }
-      return 'untitled-page';
+      return 'untitled-page'
     }
   },
   standfirst: {
@@ -91,8 +91,8 @@ const PagesSchema = new SimpleSchema({
     label: 'The title of this page.',
     defaultValue: 'Untitled Page'
   }
-});
+})
 
-Pages.attachSchema(PagesSchema);
+Pages.attachSchema(PagesSchema)
 
-export default Pages;
+export default Pages

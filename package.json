@@ -35,7 +35,11 @@
           "Meteor",
           "FlowRouter",
           "ServiceConfiguration",
-          "check"
+          "check",
+          "$",
+          "Collection",
+          "Articles",
+          "Mongo"
       ]
     }
 }
