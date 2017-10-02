@@ -21,14 +21,14 @@ import ArticleEditor from './containers/editors/ArticleEditor.jsx'
 import PageEditor from './containers/editors/PageEditor.jsx'
 import ProjectEditor from './containers/editors/ProjectEditor.jsx'
 
-import changePage from './actions/changePage';
-import Store from './store/store';
+import changePage from './actions/changePage'
+import Store from './store/store'
 
 FlowRouter.triggers.enter((context) => {
-  const routeName = context.params.slug || context.route.name;
+  const routeName = context.params.slug || context.route.name
 
-  Store.dispatch(changePage(routeName));
-});
+  Store.dispatch(changePage(routeName))
+})
 
 FlowRouter.route('/', {
   name: 'index',
