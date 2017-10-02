@@ -1,0 +1,30 @@
+# Need to add test job
+
+js_lint:
+  before_script:
+    - npm config set loglevel warn && npm set progress=false
+    - npm install -g babel-eslint
+    - npm install -g standard --loglevel=warn
+  image: node:6
+  stage: test
+  script: standard
+
+staging:
+  type: deploy
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app=bcbrown-staging --api-key=$HEROKU_API_KEY
+  only:
+  - master
+
+production:
+  type: deploy
+  script:
+  - apt-get update -qy
+  - apt-get install -y ruby-dev
+  - gem install dpl
+  - dpl --provider=heroku --app=bcbrown --api-key=$HEROKU_API_KEY
+  only:
+  - tags

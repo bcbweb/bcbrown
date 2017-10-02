@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import { Bert } from 'meteor/themeteorchef:bert';
+import React, { Component } from 'react'
+import { Bert } from 'meteor/themeteorchef:bert'
 
 class Login extends Component {
-  render() {
-    return <section className="page-content login">
+  render () {
+    return <section className='page-content login'>
       <header><h1>Log in</h1></header>
-      {! Meteor.user() &&
+      {!Meteor.user() &&
         <a
-          href="#"
+          href='#'
           onClick={
             () => {
               Meteor.loginWithGoogle(
@@ -18,13 +18,13 @@ class Login extends Component {
                   ]
                 },
                 (error) => {
-                  if (error) Bert.alert(error, 'danger');
-                  else Bert.alert('Logged in.', 'success');
+                  if (error) Bert.alert(error, 'danger')
+                  else Bert.alert('Logged in.', 'success')
                 }
-              );
+              )
             }
           }
-          type="button"
+          type='button'
         >
           Sign in with Google
         </a>
@@ -32,8 +32,8 @@ class Login extends Component {
       {Meteor.user() &&
         <p>Already logged in :)</p>
       }
-    </section>;
+    </section>
   }
 }
 
-export default Login;
+export default Login

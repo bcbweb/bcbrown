@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Form extends Component {
-  static handleSubmit(event) {
-    event.preventDefault();
+  static handleSubmit (event) {
+    event.preventDefault()
   }
 
-  componentDidMount() {
-    const validations = this.props.validations;
+  componentDidMount () {
+    const validations = this.props.validations
 
     if (validations) {
-      $(this.refs.form).validate(validations);
+      $(this.refs.form).validate(validations)
     }
   }
 
-  render() {
+  render () {
     return <form
-      ref="form"
-      id={ this.props.id }
-      className={ this.props.className }
-      onSubmit={ this.handleSubmit }
+      ref='form'
+      id={this.props.id}
+      className={this.props.className}
+      onSubmit={this.handleSubmit}
     >
       { this.props.children }
-    </form>;
+    </form>
   }
 }
 
-export default Form;
+export default Form

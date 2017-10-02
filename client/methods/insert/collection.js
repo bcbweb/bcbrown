@@ -1,12 +1,12 @@
 Meteor.methods({
-  insertMethod(argument) {
-    check(argument, Object);
+  insertMethod (argument) {
+    check(argument, Object)
 
     try {
-      const documentId = Collection.insert(argument);
-      return documentId;
+      const documentId = Collection.insert(argument)
+      return documentId
     } catch (exception) {
-      return exception;
+      return exception
     }
   }
-});
+})

@@ -1,5 +1,5 @@
-const Modules = {};
+const Modules = {}
 
-Modules.server = {};
+Modules.server = {}
 
-export default Modules;
+export default Modules

@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Bert } from 'meteor/themeteorchef:bert';
-import { getSlug } from 'meteor/ongoworks:speakingurl';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { createContainer } from 'meteor/react-meteor-data'
+import { Bert } from 'meteor/themeteorchef:bert'
+import { getSlug } from 'meteor/ongoworks:speakingurl'
 
-import Pages from '../../../collections/pages';
-import { getValue, isChecked, setValue } from '../../helpers/react';
+import Pages from '../../../collections/pages'
+import { getValue, isChecked, setValue } from '../../helpers/react'
 
-import Form from '../../components/forms/Form.jsx';
-import FormGroup from '../../components/forms/FormGroup.jsx';
-import FormControl from '../../components/forms/FormControl.jsx';
-import SuccessButton from '../../components/buttons/SuccessButton.jsx';
-import Loading from '../../components/global/Loading.jsx';
+import Form from '../../components/forms/Form.jsx'
+import FormGroup from '../../components/forms/FormGroup.jsx'
+import FormControl from '../../components/forms/FormControl.jsx'
+import SuccessButton from '../../components/buttons/SuccessButton.jsx'
+import Loading from '../../components/global/Loading.jsx'
 
 class PageEditor extends Component {
-  validations() {
-    const component = this;
+  validations () {
+    const component = this
 
     return {
       rules: {
@@ -28,8 +28,8 @@ class PageEditor extends Component {
           required: 'A page title is required!'
         }
       },
-      submitHandler() {
-        const form = component.refs.editPageForm.refs.form;
+      submitHandler () {
+        const form = component.refs.editPageForm.refs.form
         const page = {
           content: getValue(form, '[name="pageContent"]'),
           published: isChecked(form, '[name="pagePublished"]'),
@@ -41,147 +41,147 @@ class PageEditor extends Component {
             .split(',')
             .map(string => string.trim()),
           title: getValue(form, '[name="pageTitle"]')
-        };
+        }
 
-        if (! component.props.newPage) page._id = component.props.pageId;
+        if (!component.props.newPage) page._id = component.props.pageId
 
         Meteor.call('savePage', page, (error) => {
           if (error) {
-            Bert.alert(error.reason, 'danger');
+            Bert.alert(error.reason, 'danger')
           } else {
             Bert.alert(
               `Page  ${component.props.newPage ? 'added' : 'saved'}!`,
               'success'
-            );
+            )
           }
-        });
+        })
       }
-    };
+    }
   }
 
-  generateSlug(event) {
-    const form         = this.refs.editPageForm.refs.form;
-    const title        = event.target.value;
+  generateSlug (event) {
+    const form = this.refs.editPageForm.refs.form
+    const title = event.target.value
 
     setValue(
       form,
       '[name="pageSlug"]',
       getSlug(title, { custom: { "'": '' } })
-    );
+    )
   }
 
-  static handleSubmit(event) {
-    event.preventDefault();
+  static handleSubmit (event) {
+    event.preventDefault()
   }
 
-  render() {
-    if (! this.props.ready) return <Loading/>;
+  render () {
+    if (!this.props.ready) return <Loading />
 
-    const page = this.props.page;
+    const page = this.props.page
 
-    return <section className="page-content editor">
+    return <section className='page-content editor'>
       <Form
-        ref="editPageForm"
-        id="edit-page"
-        className="edit-page"
-        validations={ this.validations() }
-        onSubmit={ this.handleSubmit }
+        ref='editPageForm'
+        id='edit-page'
+        className='edit-page'
+        validations={this.validations()}
+        onSubmit={this.handleSubmit}
       >
         <FormGroup>
           <FormControl
-            style="checkbox"
-            name="pagePublished"
-            label="Published?"
-            defaultValue={ page && page.published }
+            style='checkbox'
+            name='pagePublished'
+            label='Published?'
+            defaultValue={page && page.published}
           />
           <FormControl
-            style="checkbox"
-            name="pageMainMenuItem"
-            label="Is this a main menu page?"
-            defaultValue={ page && page.mainMenuItem }
-          />
-        </FormGroup>
-        <FormGroup>
-          <FormControl
-            showLabel={ false }
-            style="input"
-            type="text"
-            name="pageTitle"
-            label="Title"
-            onChange={ event => this.generateSlug(event) }
-            defaultValue={ page && page.title }
-          />
-          <FormControl
-            showLabel={ false }
-            style="input"
-            type="text"
-            name="pageOrder"
-            small={ true }
-            label="Priority (order in menu)"
-            defaultValue={ page && page.order }
+            style='checkbox'
+            name='pageMainMenuItem'
+            label='Is this a main menu page?'
+            defaultValue={page && page.mainMenuItem}
           />
         </FormGroup>
         <FormGroup>
           <FormControl
-            disabled={ true }
-            showLabel={ false }
-            style="input"
-            type="text"
-            name="pageSlug"
-            label="Slug"
-            defaultValue={ page && page.slug }
+            showLabel={false}
+            style='input'
+            type='text'
+            name='pageTitle'
+            label='Title'
+            onChange={event => this.generateSlug(event)}
+            defaultValue={page && page.title}
+          />
+          <FormControl
+            showLabel={false}
+            style='input'
+            type='text'
+            name='pageOrder'
+            small
+            label='Priority (order in menu)'
+            defaultValue={page && page.order}
           />
         </FormGroup>
         <FormGroup>
           <FormControl
-            showLabel={ false }
-            style="textarea"
-            name="pageStandfirst"
-            label="Standfirst"
-            defaultValue={ page && page.standfirst }
+            disabled
+            showLabel={false}
+            style='input'
+            type='text'
+            name='pageSlug'
+            label='Slug'
+            defaultValue={page && page.slug}
           />
         </FormGroup>
         <FormGroup>
           <FormControl
-            showLabel={ false }
-            style="textarea"
-            name="pageContent"
-            label="Content"
-            defaultValue={ page && page.content }
+            showLabel={false}
+            style='textarea'
+            name='pageStandfirst'
+            label='Standfirst'
+            defaultValue={page && page.standfirst}
           />
         </FormGroup>
         <FormGroup>
           <FormControl
-            showLabel={ false }
-            style="input"
-            type="text"
-            name="pageTags"
-            label="Tags"
-            defaultValue={ page && page.tags }
+            showLabel={false}
+            style='textarea'
+            name='pageContent'
+            label='Content'
+            defaultValue={page && page.content}
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormControl
+            showLabel={false}
+            style='input'
+            type='text'
+            name='pageTags'
+            label='Tags'
+            defaultValue={page && page.tags}
           />
         </FormGroup>
         <FormGroup>
           <SuccessButton
-            type="submit"
-            label={ this.props.newPage ? 'Add page' : 'Save page' }
+            type='submit'
+            label={this.props.newPage ? 'Add page' : 'Save page'}
           />
-         </FormGroup>
+        </FormGroup>
       </Form>
-    </section>;
+    </section>
   }
 }
 
 PageEditor.propTypes = {
   page: PropTypes.object,
   ready: PropTypes.bool
-};
+}
 
 export default createContainer((params) => {
-  const pageId = params.pageId || '';
-  const subscription = Meteor.subscribe('pageEditor', pageId);
+  const pageId = params.pageId || ''
+  const subscription = Meteor.subscribe('pageEditor', pageId)
 
   return {
     page: Pages.findOne({ _id: pageId }),
     ready: subscription.ready()
-  };
-}, PageEditor);
+  }
+}, PageEditor)

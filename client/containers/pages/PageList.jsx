@@ -1,40 +1,40 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Bert } from 'meteor/themeteorchef:bert';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { createContainer } from 'meteor/react-meteor-data'
+import { Bert } from 'meteor/themeteorchef:bert'
 
-import Pages from '../../../collections/pages';
+import Pages from '../../../collections/pages'
 
 const deleteItem = (page) => {
   Meteor.call('removePage', page, (error) => {
     if (error) {
-      Bert.alert(error.reason, 'danger');
+      Bert.alert(error.reason, 'danger')
     } else {
-      Bert.alert('Project removed!', 'success');
+      Bert.alert('Project removed!', 'success')
     }
-  });
-};
+  })
+}
 
 class PageList extends Component {
-  render() {
+  render () {
     if (this.props.ready && this.props.pages.length === 0) {
-      return <div>No pages to display.</div>;
+      return <div>No pages to display.</div>
     }
 
     const adminButtonClasses = [
       'admin-button',
       'pages__admin-button'
-    ].join(' ');
+    ].join(' ')
 
-    const userId = Meteor.user()._id;
+    const userId = Meteor.user()._id
 
-    return <section className="page-content pages">
+    return <section className='page-content pages'>
       {this.props.pages.map((page) => {
-        if (! page.published && userId !== page.author) return false;
+        if (!page.published && userId !== page.author) return false
 
-        return <article key={page._id} className="pages__list-item">
+        return <article key={page._id} className='pages__list-item'>
           <h1>{page.title}</h1>
-          <ul className="pages__admin-options">
+          <ul className='pages__admin-options'>
             <li>
               <button
                 className={
@@ -58,9 +58,9 @@ class PageList extends Component {
               </button>
             </li>
           </ul>
-        </article>;
+        </article>
       })}
-    </section>;
+    </section>
   }
 }
 
@@ -68,14 +68,14 @@ PageList.propTypes = {
   hasUser: PropTypes.object,
   pages: PropTypes.array,
   ready: PropTypes.bool
-};
+}
 
 export default createContainer(() => {
-  const subscription = Meteor.subscribe('allPages');
+  const subscription = Meteor.subscribe('allPages')
 
   return {
     hasUser: Meteor.user(),
     pages: Pages.find({}).fetch(),
     ready: subscription.ready()
-  };
-}, PageList);
+  }
+}, PageList)

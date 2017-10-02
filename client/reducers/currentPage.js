@@ -1,10 +1,10 @@
 const currentPage = (state = 0, action = {}) => {
   switch (action.type) {
     case 'CHANGE_PAGE':
-      return action.pageName;
+      return action.pageName
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default currentPage;
+export default currentPage
