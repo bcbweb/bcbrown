@@ -42,8 +42,5 @@
       "Articles",
       "Mongo"
     ]
-  },
-  "devDependencies": {
-    "babel-eslint": "^7.2.3"
   }
 }

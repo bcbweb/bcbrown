@@ -3,6 +3,7 @@
 js_lint:
   before_script:
     - npm config set loglevel warn && npm set progress=false
+    - npm install -g babel-eslint
     - npm install -g standard --loglevel=warn
   image: node:6
   stage: test
