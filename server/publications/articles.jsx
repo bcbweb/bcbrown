@@ -1,13 +1,13 @@
-import Articles from '../../collections/articles';
+import Articles from '../../collections/articles'
 
-Meteor.publish('allArticles', () => Articles.find());
+Meteor.publish('allArticles', () => Articles.find())
 Meteor.publish('singleArticle', (slug) => {
-  check(slug, String);
+  check(slug, String)
 
-  return Articles.find({ slug });
-});
+  return Articles.find({ slug })
+})
 Meteor.publish('articleEditor', (_id) => {
-  check(_id, String);
+  check(_id, String)
 
-  return Articles.find({ _id });
-});
+  return Articles.find({ _id })
+})

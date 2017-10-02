@@ -1,59 +1,59 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import createFragment from 'react-addons-create-fragment';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Bert } from 'meteor/themeteorchef:bert';
-import { Helmet } from 'react-helmet';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import createFragment from 'react-addons-create-fragment'
+import { createContainer } from 'meteor/react-meteor-data'
+import { Bert } from 'meteor/themeteorchef:bert'
+import { Helmet } from 'react-helmet'
 
-import Articles from '../../../collections/articles';
-import ListItemArticle from '../../components/global/ListItemArticle.jsx';
-import Loading from '../../components/global/Loading.jsx';
+import Articles from '../../../collections/articles'
+import ListItemArticle from '../../components/global/ListItemArticle.jsx'
+import Loading from '../../components/global/Loading.jsx'
 
 class ArticlesPage extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
-    this.state = {};
+    this.state = {}
   }
 
-  render() {
-    if (! this.props.ready) return <Loading/>;
+  render () {
+    if (!this.props.ready) return <Loading />
 
     if (this.props.articles.length === 0) {
-      return <p>No articles to display.</p>;
+      return <p>No articles to display.</p>
     }
 
     const deleteItem = (article) => {
       Meteor.call('removeArticle', article, (error) => {
         if (error) {
-          Bert.alert(error.reason, 'danger');
+          Bert.alert(error.reason, 'danger')
         } else {
-          Bert.alert('Article removed!', 'success');
+          Bert.alert('Article removed!', 'success')
         }
-      });
-    };
+      })
+    }
 
     const adminButtonClasses = [
       'admin-button',
       'portfolio__admin-button'
-    ].join(' ');
+    ].join(' ')
 
-    const userId = (Meteor.user()) ? Meteor.user()._id : 'anon';
+    const userId = (Meteor.user()) ? Meteor.user()._id : 'anon'
 
     return (
-      <section className="page-content articles">
+      <section className='page-content articles'>
         <Helmet>
           <meta
-            property="og:description"
-            content="Read my articles."
+            property='og:description'
+            content='Read my articles.'
           />
           <meta
-            name="description"
-            content="Read my articles."
+            name='description'
+            content='Read my articles.'
           />
         </Helmet>
         {this.props.articles.map((article) => {
-          if (! article.published && userId !== article.author) return false;
+          if (!article.published && userId !== article.author) return false
 
           const listItem = <ListItemArticle
             date={article.date}
@@ -62,9 +62,9 @@ class ArticlesPage extends Component {
             standfirst={article.standfirst}
             tags={article.tags}
             title={article.title}
-          />;
+          />
 
-          const adminLinks = <ul className="articles__admin-options">
+          const adminLinks = <ul className='articles__admin-options'>
             <li>
               <button
                 className={
@@ -87,19 +87,19 @@ class ArticlesPage extends Component {
                 Delete
               </button>
             </li>
-          </ul>;
+          </ul>
 
           if (this.props.hasUser) {
             return createFragment({
               listItem,
               adminLinks
-            });
+            })
           }
 
-          return listItem;
+          return listItem
         })}
       </section>
-    );
+    )
   }
 }
 
@@ -107,14 +107,14 @@ ArticlesPage.propTypes = {
   articles: PropTypes.array.isRequired,
   hasUser: PropTypes.object,
   ready: PropTypes.bool
-};
+}
 
 export default createContainer(() => {
-  const articlesSubscription = Meteor.subscribe('allArticles');
+  const articlesSubscription = Meteor.subscribe('allArticles')
 
   return {
     articles: Articles.find({}, { sort: { date: -1 } }).fetch(), // eslint-disable-line space-unary-ops
     hasUser: Meteor.user(),
     ready: articlesSubscription.ready()
-  };
-}, ArticlesPage);
+  }
+}, ArticlesPage)

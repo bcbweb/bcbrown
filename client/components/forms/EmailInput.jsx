@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import FormControl from './FormControl.jsx';
+import FormControl from './FormControl.jsx'
 
 class EmailInput extends Component {
-  render() {
+  render () {
     return <FormControl
-      reference={ this.props.ref }
-      showLabel={ this.props.showLabel }
-      style="input"
-      name="emailAddress"
-      type="email"
-      label="Email Address"
-    />;
+      reference={this.props.ref}
+      showLabel={this.props.showLabel}
+      style='input'
+      name='emailAddress'
+      type='email'
+      label='Email Address'
+    />
   }
 }
 
-export default EmailInput;
+export default EmailInput

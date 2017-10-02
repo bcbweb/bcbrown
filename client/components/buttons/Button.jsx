@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Button extends Component {
-  render() {
+  render () {
     if (this.props.href) {
       return (
         <a
-          href={ this.props.href }
-          className={ `btn btn-${this.props.style}` }
+          href={this.props.href}
+          className={`btn btn-${this.props.style}`}
         >
           { this.props.label }
         </a>
-      );
+      )
     }
     return <button
-      type={ this.props.type }
-      className={ `btn btn-${this.props.style}` }
-      onClick={ this.props.onClick }
+      type={this.props.type}
+      className={`btn btn-${this.props.style}`}
+      onClick={this.props.onClick}
     >
       { this.props.label }
-    </button>;
+    </button>
   }
 }
 
-export default Button;
+export default Button

@@ -1,12 +1,12 @@
-import Pages from '../../../collections/pages';
+import Pages from '../../../collections/pages'
 
 Meteor.methods({
-  savePage(page) {
-    check(page, Object);
+  savePage (page) {
+    check(page, Object)
 
-    const pageId = page._id;
-    delete page._id;
+    const pageId = page._id
+    delete page._id
 
-    Pages.upsert(pageId, { $set: page });
+    Pages.upsert(pageId, { $set: page })
   }
-});
+})

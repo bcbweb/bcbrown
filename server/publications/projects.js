@@ -1,13 +1,13 @@
-import Projects from '../../collections/projects';
+import Projects from '../../collections/projects'
 
-Meteor.publish('allProjects', () => Projects.find());
+Meteor.publish('allProjects', () => Projects.find())
 Meteor.publish('singleProject', (slug) => {
-  check(slug, String);
+  check(slug, String)
 
-  return Projects.find({ slug });
-});
+  return Projects.find({ slug })
+})
 Meteor.publish('projectEditor', (_id) => {
-  check(_id, String);
+  check(_id, String)
 
-  return Projects.find({ _id });
-});
+  return Projects.find({ _id })
+})

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class FormGroup extends Component {
-  render() {
-    return <div className="form-group">
+  render () {
+    return <div className='form-group'>
       { this.props.children }
-    </div>;
+    </div>
   }
 }
 
-export default FormGroup;
+export default FormGroup

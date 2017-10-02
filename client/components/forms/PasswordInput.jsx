@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import FormControl from './FormControl.jsx';
+import FormControl from './FormControl.jsx'
 
 class PasswordInput extends Component {
-  render() {
+  render () {
     return <FormControl
-      reference={ this.props.ref }
-      showLabel={ this.props.showLabel }
-      labelLink={ this.props.labelLink }
-      style="input"
-      name="password"
-      type="password"
-      label="Password"
-    />;
+      reference={this.props.ref}
+      showLabel={this.props.showLabel}
+      labelLink={this.props.labelLink}
+      style='input'
+      name='password'
+      type='password'
+      label='Password'
+    />
   }
 }
 
-export default PasswordInput;
+export default PasswordInput
