@@ -29,18 +29,21 @@
     "react-share": "^1.15.0",
     "remarkable": "^1.7.1",
     "webfontloader": "^1.6.28"
-    },
-    "standard": {
-      "parser": "babel-eslint",
-      "globals": [
-          "Meteor",
-          "FlowRouter",
-          "ServiceConfiguration",
-          "check",
-          "$",
-          "Collection",
-          "Articles",
-          "Mongo"
-      ]
-    }
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "Meteor",
+      "FlowRouter",
+      "ServiceConfiguration",
+      "check",
+      "$",
+      "Collection",
+      "Articles",
+      "Mongo"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.3"
+  }
 }
