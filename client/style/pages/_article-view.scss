@@ -39,7 +39,14 @@
 }
 
 .article-view__content {
+  clear: both;
+
   h1 {
     margin-bottom: 1rem;
   }
+}
+
+.article-view__tags {
+  float: right;
+  width: 80%;
 }
