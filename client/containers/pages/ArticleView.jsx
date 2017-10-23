@@ -85,7 +85,7 @@ class ArticleView extends Component {
             })}
           </ul>
         }
-        <div dangerouslySetInnerHTML={{ __html: cleanContent }} />
+        <div className='article-view__content' dangerouslySetInnerHTML={{ __html: cleanContent }} />
       </section>
     )
   }
