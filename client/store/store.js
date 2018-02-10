@@ -8,7 +8,7 @@ const logger = createLogger()
 
 const middleWare = [ReduxThunk]
 
-if (Meteor.settings.public.production === "false") middleWare.push(logger)
+if (Meteor.settings.public.production === 'false') middleWare.push(logger)
 
 const enhancers = [
   applyMiddleware(...middleWare),
