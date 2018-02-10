@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { createContainer } from 'meteor/react-meteor-data'
+import { connect } from 'react-redux'
 
 import Pages from '../../../collections/pages'
 
 class Navigation extends Component {
   constructor (props) {
     super(props)
+  }
 
-    this.state = { menuOpen: false }
+  componentDidMount () {
   }
 
   toggleMenu () {
@@ -22,6 +24,19 @@ class Navigation extends Component {
     if (!this.props.pages) return <div>No pages</div>
 
     const pages = this.props.defaultPages.concat(this.props.pages)
+  
+    this.state = {
+      menuOpen: false,
+      menuItems: pages.map(
+        ({_id, slug, title}) => (
+          {
+            _id,
+            slug,
+            title,
+            active: this.props.currentPage === slug
+          })
+        )
+    }
 
     let menuItemsClass = 'navigation-main__menu-items'
     if (this.state.menuOpen) {
@@ -38,23 +53,13 @@ class Navigation extends Component {
           }}
         />
         <ul className={menuItemsClass}>
-          {pages.map((page) => {
-            let menuLinkClass = 'navigation-main__menu-link'
-            const currentRoute = FlowRouter.current()
-            const currentName = currentRoute.route.name
-            const currentSlug = currentRoute.params.slug
+          {this.state.menuItems.map((menuItem) => {
+            let menuLinkClass = `navigation-main__menu-link${menuItem.active ? ' navigation-main__menu-link_active' : ''}`
 
-            if (
-              currentName !== 'index' &&
-              (currentName === page.slug || currentSlug === page.slug)
-            ) {
-              menuLinkClass = `${menuLinkClass} ${menuLinkClass}_active`
-            }
-
-            return <li key={page._id}>
+            return <li key={menuItem._id}>
               <a
                 className={menuLinkClass}
-                href={`/${page.slug}`}
+                href={`/${menuItem.slug}`}
                 onClick={() => {
                   this.forceUpdate()
                   this.setState({
@@ -62,7 +67,7 @@ class Navigation extends Component {
                   })
                 }}
               >
-                {page.title}
+                {menuItem.title}
               </a>
             </li>
           })}
@@ -78,11 +83,16 @@ Navigation.propTypes = {
   ready: PropTypes.bool
 }
 
-export default createContainer(() => {
+const mapStateToProps = (state) => {
+  return {
+    currentPage: state.currentPage
+  }
+}
+
+const Container = createContainer(() => {
   const subscription = Meteor.subscribe('allPages')
 
   return {
-    currentRoute: FlowRouter.current(),
     defaultPages: [
       { _id: 0, title: 'Articles', slug: 'articles' },
       { _id: 1, title: 'Work', slug: 'work' }
@@ -94,3 +104,5 @@ export default createContainer(() => {
     ready: subscription.ready()
   }
 }, Navigation)
+
+export default connect(mapStateToProps)(Container)

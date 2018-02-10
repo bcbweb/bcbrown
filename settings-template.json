@@ -3,8 +3,8 @@
   "private": {
     "oAuth": {
       "google": {
-        "clientId": "xxxxxxxxxxxxxxxxx",
-        "secret": "xxxxxxxxxxxxxxxxx"
+        "clientId": "170016000679-rar7g54a65lcpdkpl1vqksl4sld5pou6.apps.googleusercontent.com",
+        "secret": "z6eUEtubNtCuKD6E_d5vtnnQ"
       }
     }
   }
