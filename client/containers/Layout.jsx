@@ -3,11 +3,13 @@ import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import { createContainer } from 'meteor/react-meteor-data'
 import { Roles } from 'meteor/alanning:roles'
+import { Provider } from 'react-redux'
 
 import Header from '../components/global/Header.jsx'
 import Navigation from '../components/global/Navigation.jsx'
 import Footer from '../components/global/Footer.jsx'
 import Loading from '../components/global/Loading.jsx'
+import store from '../store/store'
 
 class Layout extends Component {
   getView () {
@@ -19,15 +21,17 @@ class Layout extends Component {
   }
 
   render () {
-    return <div className='app-root'>
-      <Helmet htmlAttributes={{ lang: 'en-GB' }} />
-      <Navigation />
-      <Header />
-      <main>
-        { this.props.loggingIn ? <Loading /> : this.getView() }
-      </main>
-      <Footer />
-    </div>
+    return <Provider store={store}>
+      <div className='app-root'>
+        <Helmet htmlAttributes={{ lang: 'en-GB' }} />
+        <Navigation />
+        <Header />
+        <main>
+          { this.props.loggingIn ? <Loading /> : this.getView() }
+        </main>
+        <Footer />
+      </div>
+    </Provider>
   }
 }
 

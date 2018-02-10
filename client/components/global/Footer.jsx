@@ -8,7 +8,6 @@ const handleLogOut = (event) => {
 
 class Footer extends Component {
   render () {
-    console.log(Meteor.user())
     let roles = ''
     if (Meteor.user() && Meteor.user().roles) {
       roles = Meteor.user().roles.join('/')
