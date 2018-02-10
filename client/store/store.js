@@ -6,8 +6,12 @@ import DevTools from '../helpers/DevTools'
 
 const logger = createLogger()
 
+const middleWare = [ReduxThunk]
+
+if (Meteor.settings.public.production === "false") middleWare.push(logger)
+
 const enhancers = [
-  applyMiddleware(ReduxThunk),
+  applyMiddleware(...middleWare),
   DevTools.instrument()
 ]
 
