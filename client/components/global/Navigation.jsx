@@ -6,13 +6,6 @@ import { connect } from 'react-redux'
 import Pages from '../../../collections/pages'
 
 class Navigation extends Component {
-  constructor (props) {
-    super(props)
-  }
-
-  componentDidMount () {
-  }
-
   toggleMenu () {
     this.setState({
       menuOpen: !this.state.menuOpen
@@ -24,7 +17,7 @@ class Navigation extends Component {
     if (!this.props.pages) return <div>No pages</div>
 
     const pages = this.props.defaultPages.concat(this.props.pages)
-  
+
     this.state = {
       menuOpen: false,
       menuItems: pages.map(
