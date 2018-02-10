@@ -45,7 +45,7 @@ class Navigation extends Component {
             const currentSlug = currentRoute.params.slug
 
             if (
-              currentName !== 'home' &&
+              currentName !== 'index' &&
               (currentName === page.slug || currentSlug === page.slug)
             ) {
               menuLinkClass = `${menuLinkClass} ${menuLinkClass}_active`
