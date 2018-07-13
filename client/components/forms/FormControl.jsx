@@ -54,7 +54,7 @@ class FormControl extends Component {
         disabled={this.props.disabled}
         onChange={this.props.onChange}
         defaultValue={this.props.defaultValue}
-       />,
+      />,
       checkbox: <div className='checkbox'>
         <label>{ this.renderCheckbox() } { this.props.label }</label>
       </div>

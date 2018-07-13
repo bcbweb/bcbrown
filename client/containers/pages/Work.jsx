@@ -53,36 +53,35 @@ class Work extends Component {
                   style={{
                     backgroundImage: `url(${project.featuredImageUrl})`
                   }}
-                   />
+                />
                 {this.props.hasUser &&
                 <ul className='portfolio__admin-options'>
                   <li>
                     <button
                       className={
-                            `${adminButtonClasses} ${' portfolio__edit'}`
-                          }
+                        `${adminButtonClasses} ${' portfolio__edit'}`
+                      }
                       onClick={
-                            () => FlowRouter.go(`/work/${project._id}/edit`)
-                          }
-                        >
-                          Edit
-                        </button>
+                        () => FlowRouter.go(`/work/${project._id}/edit`)
+                      }
+                    >
+                      Edit
+                    </button>
                   </li>
                   <li>
                     <button
                       className={
-                            `${adminButtonClasses} ${' portfolio__delete'}`
-                          }
+                        `${adminButtonClasses} ${' portfolio__delete'}`
+                      }
                       onClick={() => this.deleteItem(project)}
-                        >
-                          Delete
-                        </button>
+                    >
+                      Delete
+                    </button>
                   </li>
                 </ul>
-                  }
+                }
               </li>
-              )
-            )}
+            ))}
           </ul>
         </article>
       </section>

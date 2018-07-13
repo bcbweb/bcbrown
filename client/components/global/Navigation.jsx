@@ -27,8 +27,9 @@ class Navigation extends Component {
             slug,
             title,
             active: this.props.currentPage === slug
-          })
+          }
         )
+      )
     }
 
     let menuItemsClass = 'navigation-main__menu-items'

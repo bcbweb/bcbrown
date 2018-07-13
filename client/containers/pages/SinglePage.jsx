@@ -36,7 +36,7 @@ class SinglePage extends Component {
       <section
         className={`page-content ${this.props.slug}`}
         dangerouslySetInnerHTML={{ __html: cleanContent }}
-         />
+      />
     </div>
   }
 }
