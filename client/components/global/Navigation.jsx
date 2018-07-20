@@ -6,6 +6,34 @@ import { connect } from 'react-redux'
 import Pages from '../../../collections/pages'
 
 class Navigation extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      menuOpen: false,
+      menuItems: []
+    }
+  }
+
+  componentDidUpdate (prevProps) {
+    if (this.props.pages !== prevProps.pages) {
+      const pages = this.props.defaultPages.concat(this.props.pages)
+
+      this.setState({
+        menuItems: pages.map(
+          ({_id, slug, title}) => (
+            {
+              _id,
+              slug,
+              title,
+              active: this.props.currentPage === slug
+            }
+          )
+        )
+      })
+    }
+  }
+
   toggleMenu () {
     this.setState({
       menuOpen: !this.state.menuOpen
@@ -15,22 +43,6 @@ class Navigation extends Component {
   render () {
     if (!this.props.ready) return false
     if (!this.props.pages) return <div>No pages</div>
-
-    const pages = this.props.defaultPages.concat(this.props.pages)
-
-    this.state = {
-      menuOpen: false,
-      menuItems: pages.map(
-        ({_id, slug, title}) => (
-          {
-            _id,
-            slug,
-            title,
-            active: this.props.currentPage === slug
-          }
-        )
-      )
-    }
 
     let menuItemsClass = 'navigation-main__menu-items'
     if (this.state.menuOpen) {
