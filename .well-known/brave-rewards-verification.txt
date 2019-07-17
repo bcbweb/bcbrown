@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: bcbrown.com
+Token: d4365d39c2c91631dc29a207d2ddeeb3d0d855a2fc584f3e6015eb9652caa221
