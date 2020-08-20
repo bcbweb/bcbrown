@@ -7,7 +7,7 @@
   "dependencies": {
     "babel-eslint": "^7.2.3",
     "babel-runtime": "^6.25.0",
-    "bcrypt": "^1.0.2",
+    "bcrypt": "^5.0.0",
     "dompurify": "^0.9.0",
     "highlight.js": "^9.12.0",
     "indexof": "0.0.1",
